@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "mode",
+    "generatedAt",
+    "series",
+    "events",
+    "calendarStatus"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "mode": { "enum": ["live", "demo"] },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "calendarStatus": {
+      "enum": ["ok", "unavailable", "stale", "partial", "demo"]
+    },
+    "series": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/series" }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "date", "url", "importance"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "time": { "type": ["string", "null"], "format": "date-time" },
+          "url": { "type": "string", "pattern": "^https://" },
+          "importance": { "enum": [1, 2, 3] }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "value"],
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "value": { "type": ["number", "null"] }
+      }
+    },
+    "series": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "unit",
+        "frequency",
+        "provider",
+        "url",
+        "status",
+        "fetchedAt",
+        "observations"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "unit": { "type": "string" },
+        "frequency": { "enum": ["daily", "weekly", "monthly", "quarterly"] },
+        "provider": { "type": "string" },
+        "url": { "type": "string", "pattern": "^https://" },
+        "status": { "enum": ["ok", "stale", "unavailable", "demo"] },
+        "reason": { "type": "string" },
+        "fetchedAt": { "type": ["string", "null"], "format": "date-time" },
+        "releasedAt": { "type": ["string", "null"], "format": "date-time" },
+        "observations": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/point" }
+        }
+      }
+    }
+  }
+}

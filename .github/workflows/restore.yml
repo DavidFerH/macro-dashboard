@@ -1,0 +1,56 @@
+name: Restore validated release
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Successful Update data and publish run ID from this repository
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: macro-pages
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify provenance and download release
+        uses: actions/github-script@v7
+        env:
+          RELEASE_RUN_ID: ${{ inputs.run_id }}
+        with:
+          script: |
+            const run_id = Number(process.env.RELEASE_RUN_ID);
+            if (!Number.isSafeInteger(run_id) || run_id <= 0) throw new Error('Invalid run ID');
+            const { owner, repo } = context.repo;
+            const { data: run } = await github.rest.actions.getWorkflowRun({ owner, repo, run_id });
+            if (run.conclusion !== 'success' || run.path !== '.github/workflows/deploy.yml' ||
+                run.head_branch !== 'main' || run.head_repository.full_name !== owner + '/' + repo) {
+              throw new Error('Only successful main-branch publication runs can be restored');
+            }
+            const { data } = await github.rest.actions.listWorkflowRunArtifacts({ owner, repo, run_id });
+            const artifact = data.artifacts.find(a => a.name === 'validated-release' && !a.expired);
+            if (!artifact) throw new Error('Validated release missing or expired');
+            const archive = await github.rest.actions.downloadArtifact({ owner, repo, artifact_id: artifact.id, archive_format: 'zip' });
+            require('fs').writeFileSync('release.zip', Buffer.from(archive.data));
+      - run: unzip -q release.zip -d restored
+      - name: Verify expected entry points
+        run: test -s restored/index.html && test -s restored/macro.html && test -s restored/data/snapshot.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: restored/
+  deploy:
+    needs: restore
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

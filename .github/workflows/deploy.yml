@@ -1,0 +1,70 @@
+name: Update data and publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 12,16,22 * * *"
+permissions:
+  contents: read
+concurrency:
+  group: macro-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "11.19.0"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pnpm install --frozen-lockfile
+      - run: pip install -r requirements.txt
+      - run: pnpm lint && pnpm typecheck && pnpm test
+      - run: python -m pytest
+      - run: python -m pipeline.build --demo --output .local/demo.json
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - name: Retrieve last validated public data
+        run: python -m scripts.previous_snapshot
+      - name: Download and validate real data
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python -m pipeline.build --previous .local/previous.json
+      - name: Validate financial calculations
+        env:
+          REQUIRE_LIVE: "true"
+        run: pnpm data:validate
+      - name: Check live data in the browser
+        run: pnpm exec playwright test live.spec.ts
+      - run: pnpm build
+      - run: python -m scripts.check_secrets
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-release
+          path: dist/
+          retention-days: 90
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish validated artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

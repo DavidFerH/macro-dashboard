@@ -1,0 +1,749 @@
+[
+  {
+    "id": "DFF",
+    "name": "Tipo efectivo Fed",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DFF"
+  },
+  {
+    "id": "DGS2",
+    "name": "Treasury 2 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DGS2"
+  },
+  {
+    "id": "DGS10",
+    "name": "Treasury 10 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DGS10"
+  },
+  {
+    "id": "DFII10",
+    "name": "TIPS 10 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DFII10"
+  },
+  {
+    "id": "DGS3MO",
+    "name": "Treasury 3 meses",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DGS3MO"
+  },
+  {
+    "id": "DGS30",
+    "name": "Treasury 30 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DGS30"
+  },
+  {
+    "id": "T10Y3M",
+    "name": "10 años − 3 meses",
+    "unit": "pp",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/T10Y3M"
+  },
+  {
+    "id": "T10Y2Y",
+    "name": "10 años − 2 años",
+    "unit": "pp",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+  },
+  {
+    "id": "MORTGAGE30US",
+    "name": "Hipoteca 30 años",
+    "unit": "%",
+    "frequency": "weekly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+  },
+  {
+    "id": "CPIAUCNS",
+    "name": "IPC general",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CPIAUCNS"
+  },
+  {
+    "id": "CPILFENS",
+    "name": "IPC subyacente",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CPILFENS"
+  },
+  {
+    "id": "PCEPILFE",
+    "name": "PCE subyacente",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/PCEPILFE"
+  },
+  {
+    "id": "PCEPI",
+    "name": "PCE",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/PCEPI"
+  },
+  {
+    "id": "CPIAUCSL",
+    "name": "IPC desestacionalizado",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
+  },
+  {
+    "id": "T5YIE",
+    "name": "Breakeven 5 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/T5YIE"
+  },
+  {
+    "id": "T10YIE",
+    "name": "Breakeven 10 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/T10YIE"
+  },
+  {
+    "id": "EXPINF1YR",
+    "name": "Expectativa Cleveland 1 año",
+    "unit": "%",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/EXPINF1YR"
+  },
+  {
+    "id": "CES0500000003",
+    "name": "Salario por hora",
+    "unit": "USD",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CES0500000003"
+  },
+  {
+    "id": "CUSR0000SAH1",
+    "name": "Alquiler equivalente y vivienda",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CUSR0000SAH1"
+  },
+  {
+    "id": "PPIFIS",
+    "name": "Precios de producción",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/PPIFIS"
+  },
+  {
+    "id": "DCOILWTICO",
+    "name": "Petróleo WTI",
+    "unit": "USD/barril",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DCOILWTICO"
+  },
+  {
+    "id": "GASREGW",
+    "name": "Gasolina regular",
+    "unit": "USD/galón",
+    "frequency": "weekly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/GASREGW"
+  },
+  {
+    "id": "A191RL1Q225SBEA",
+    "name": "PIB real anualizado",
+    "unit": "%",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/A191RL1Q225SBEA"
+  },
+  {
+    "id": "GDPNOW",
+    "name": "GDPNow",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/GDPNOW"
+  },
+  {
+    "id": "CFNAI",
+    "name": "Actividad nacional Chicago",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CFNAI"
+  },
+  {
+    "id": "CFNAIMA3",
+    "name": "CFNAI media 3 meses",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CFNAIMA3"
+  },
+  {
+    "id": "INDPRO",
+    "name": "Producción industrial",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/INDPRO"
+  },
+  {
+    "id": "RSAFS",
+    "name": "Ventas minoristas",
+    "unit": "millones USD",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/RSAFS"
+  },
+  {
+    "id": "GACDISA066MSFRBNY",
+    "name": "Manufactura Nueva York",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/GACDISA066MSFRBNY"
+  },
+  {
+    "id": "GACDFSA066MSFRBPHI",
+    "name": "Manufactura Filadelfia",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/GACDFSA066MSFRBPHI"
+  },
+  {
+    "id": "HOUST",
+    "name": "Viviendas iniciadas",
+    "unit": "miles anualizados",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/HOUST"
+  },
+  {
+    "id": "PERMIT",
+    "name": "Permisos de construcción",
+    "unit": "miles anualizados",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/PERMIT"
+  },
+  {
+    "id": "UNRATE",
+    "name": "Tasa de paro",
+    "unit": "%",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/UNRATE"
+  },
+  {
+    "id": "SAHMREALTIME",
+    "name": "Regla de Sahm",
+    "unit": "pp",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/SAHMREALTIME"
+  },
+  {
+    "id": "PAYEMS",
+    "name": "Empleo no agrícola",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/PAYEMS"
+  },
+  {
+    "id": "JTSJOL",
+    "name": "Vacantes",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/JTSJOL"
+  },
+  {
+    "id": "UNEMPLOY",
+    "name": "Desempleados",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/UNEMPLOY"
+  },
+  {
+    "id": "ICSA",
+    "name": "Solicitudes iniciales",
+    "unit": "personas",
+    "frequency": "weekly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/ICSA"
+  },
+  {
+    "id": "AWHAETP",
+    "name": "Horas semanales privadas",
+    "unit": "horas",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/AWHAETP"
+  },
+  {
+    "id": "AWHMAN",
+    "name": "Horas semanales manufactureras",
+    "unit": "horas",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/AWHMAN"
+  },
+  {
+    "id": "USEHS",
+    "name": "Educación y salud",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USEHS"
+  },
+  {
+    "id": "USLAH",
+    "name": "Ocio y hostelería",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USLAH"
+  },
+  {
+    "id": "USPBS",
+    "name": "Servicios profesionales",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USPBS"
+  },
+  {
+    "id": "USGOVT",
+    "name": "Gobierno",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USGOVT"
+  },
+  {
+    "id": "USTRADE",
+    "name": "Comercio minorista",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USTRADE"
+  },
+  {
+    "id": "MANEMP",
+    "name": "Manufacturas",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/MANEMP"
+  },
+  {
+    "id": "USCONS",
+    "name": "Construcción",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USCONS"
+  },
+  {
+    "id": "CES4300000001",
+    "name": "Transporte y almacén",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CES4300000001"
+  },
+  {
+    "id": "USFIRE",
+    "name": "Finanzas",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USFIRE"
+  },
+  {
+    "id": "USWTRADE",
+    "name": "Comercio mayorista",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USWTRADE"
+  },
+  {
+    "id": "USSERV",
+    "name": "Otros servicios",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USSERV"
+  },
+  {
+    "id": "USINFO",
+    "name": "Información",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USINFO"
+  },
+  {
+    "id": "CES4422000001",
+    "name": "Suministros",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CES4422000001"
+  },
+  {
+    "id": "USMINE",
+    "name": "Minería",
+    "unit": "miles",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/USMINE"
+  },
+  {
+    "id": "NFCI",
+    "name": "Condiciones financieras Chicago",
+    "unit": "índice",
+    "frequency": "weekly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/NFCI"
+  },
+  {
+    "id": "DEXUSEU",
+    "name": "EUR/USD",
+    "unit": "USD/EUR",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/DEXUSEU"
+  },
+  {
+    "id": "WALCL",
+    "name": "Balance de la Fed",
+    "unit": "millones USD",
+    "frequency": "weekly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/WALCL"
+  },
+  {
+    "id": "NCBEILQ027S",
+    "name": "Valor de mercado empresas",
+    "unit": "millones USD",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/NCBEILQ027S"
+  },
+  {
+    "id": "GDP",
+    "name": "PIB nominal",
+    "unit": "miles de millones USD",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/GDP"
+  },
+  {
+    "id": "TNWMVBSNNCB",
+    "name": "Patrimonio neto empresas",
+    "unit": "millones USD",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/TNWMVBSNNCB"
+  },
+  {
+    "id": "BOGZ1FL153064486Q",
+    "name": "Peso de acciones en activos hogares",
+    "unit": "%",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/BOGZ1FL153064486Q"
+  },
+  {
+    "id": "CPATAX",
+    "name": "Beneficios después de impuestos",
+    "unit": "miles de millones USD",
+    "frequency": "quarterly",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/CPATAX"
+  },
+  {
+    "id": "THREEFYTP10",
+    "name": "Prima por plazo 10 años",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": true,
+    "url": "https://fred.stlouisfed.org/series/THREEFYTP10"
+  },
+  {
+    "id": "ISM_PMI",
+    "name": "PMI manufacturero",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "ISM",
+    "enabled": false,
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "ISM_NMI",
+    "name": "PMI servicios",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "ISM",
+    "enabled": false,
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "ISM_NEWORD",
+    "name": "ISM nuevos pedidos",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "ISM",
+    "enabled": false,
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "ISM_PRICES",
+    "name": "ISM precios manufacturas",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "ISM",
+    "enabled": false,
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "ISM_NMPRICES",
+    "name": "ISM precios servicios",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "ISM",
+    "enabled": false,
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "CSUSHPINSA",
+    "name": "Case-Shiller vivienda",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "VIXCLS",
+    "name": "VIX",
+    "unit": "puntos",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/VIXCLS",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "SP500",
+    "name": "S&P 500",
+    "unit": "puntos",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/SP500",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "BAMLH0A0HYM2",
+    "name": "Spread high yield",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "BAMLC0A0CM",
+    "name": "Spread investment grade",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "BAMLC0A4CBBB",
+    "name": "Spread BBB",
+    "unit": "%",
+    "frequency": "daily",
+    "provider": "FRED",
+    "enabled": false,
+    "url": "https://fred.stlouisfed.org/series/BAMLC0A4CBBB",
+    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+  },
+  {
+    "id": "SH_P",
+    "name": "Precio S&P histórico",
+    "unit": "USD",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_E",
+    "name": "Beneficios S&P",
+    "unit": "USD",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_D",
+    "name": "Dividendos S&P",
+    "unit": "USD",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_CPI",
+    "name": "IPC Shiller",
+    "unit": "índice",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_CAPE",
+    "name": "CAPE",
+    "unit": "veces",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_TRCAPE",
+    "name": "TR CAPE",
+    "unit": "veces",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  },
+  {
+    "id": "SH_GS10",
+    "name": "Bono 10 años histórico",
+    "unit": "%",
+    "frequency": "monthly",
+    "provider": "Shiller",
+    "enabled": false,
+    "url": "https://www.econ.yale.edu/~shiller/data.htm",
+    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+  }
+]

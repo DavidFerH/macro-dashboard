@@ -1,0 +1,39 @@
+name: Quality checks
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "11.19.0"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pnpm install --frozen-lockfile
+      - run: pip install -r requirements.txt
+      - run: pnpm lint && pnpm typecheck && pnpm test
+      - run: python -m pytest
+      - run: python -m pipeline.build --demo --output .local/demo.json
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - run: pnpm build
+      - run: python -m scripts.check_secrets
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-diagnostics
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
