@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,8 @@ jobs:
       - run: pnpm lint && pnpm typecheck && pnpm test
       - run: python -m pytest
       - run: python -m pipeline.build --demo --output .local/demo.json
-      - run: pnpm exec playwright install --with-deps chromium
+      # Ubuntu's hosted image already has browser libraries. Avoid unrelated apt repositories.
+      - run: pnpm exec playwright install chromium
       - run: pnpm test:e2e
       - name: Retrieve last validated public data
         run: python -m scripts.previous_snapshot
