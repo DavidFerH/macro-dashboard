@@ -43,7 +43,9 @@ def validate_snapshot(snapshot: dict) -> None:
 
 def blank_series(source: dict) -> dict:
     return {**{k: source[k] for k in ("id", "name", "unit", "frequency", "provider", "url")},
+            **{k: source[k] for k in ("attribution", "notes") if k in source},
             "status": "unavailable", "fetchedAt": None, "observations": [],
+            "reasonCode": source.get("reasonCode", "not_downloaded"),
             "reason": source.get("reason", "Fuente todavía no descargada.")}
 
 
@@ -82,7 +84,7 @@ def get_json(client: httpx.Client, endpoint: str, params: dict) -> dict:
 
 def acquire_series(source: dict, client: httpx.Client, key: str, now: str, previous: dict) -> dict:
     result = blank_series(source)
-    if not source["enabled"]:
+    if not source["enabled"] or source["provider"] != "FRED":
         return result
     try:
         response = get_json(client, "series/observations", {
@@ -96,14 +98,16 @@ def acquire_series(source: dict, client: httpx.Client, key: str, now: str, previ
             raise ValueError("Truncated observations")
         result.update(observations=points, fetchedAt=now, status="ok")
         result.pop("reason", None)
+        result.pop("reasonCode", None)
     except (RuntimeError, ValueError, KeyError):
         # Only accept a previously validated real series, never a demo fallback.
         old = previous.get(source["id"])
         if old and old["status"] in ("ok", "stale") and old["observations"]:
-            result = copy.deepcopy(old)
+            result.update(observations=copy.deepcopy(old["observations"]), fetchedAt=old["fetchedAt"])
             result.update(status="stale", reason="Falló la actualización; se conserva la última descarga válida.")
         else:
             result["reason"] = "No se pudo obtener la serie de FRED."
+        result["reasonCode"] = "download_failed"
         print(f"WARNING {source['id']}: unavailable or retained; no credentials logged")
     return result
 
@@ -152,6 +156,7 @@ def demo_snapshot(today: date = date(2026, 9, 1)) -> dict:
     for index, source in enumerate(SOURCES):
         series = blank_series(source)
         series.update(status="demo", fetchedAt=snapshot["generatedAt"], reason="Serie sintética para pruebas.")
+        series.pop("reasonCode", None)
         step = 1 if source["frequency"] == "daily" else 7 if source["frequency"] == "weekly" else 0
         cursor = date(2000, 1, 1)
         points = []
@@ -230,9 +235,11 @@ def main() -> int:
                 if snapshot["calendarStatus"] == "ok":
                     snapshot["calendarStatus"] = "partial"
                 print("WARNING FOMC: calendar unavailable")
-        if os.getenv("SHILLER_FILE"):
-            from pipeline.shiller import import_workbook
-            snapshot["series"].update(import_workbook(Path(os.environ["SHILLER_FILE"]), now))
+        from pipeline.shiller import acquire_shiller
+        snapshot["series"].update(acquire_shiller(
+            now, previous, approved=os.getenv("SHILLER_PUBLICATION_APPROVED") == "true",
+            local_file=os.getenv("SHILLER_FILE") or None,
+        ))
         if any(not snapshot["series"][key]["observations"] for key in CRITICAL):
             print("No se publica: faltan series críticas. Se conserva el archivo anterior.", file=sys.stderr)
             return 3

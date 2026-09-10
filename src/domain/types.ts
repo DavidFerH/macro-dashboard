@@ -11,6 +11,14 @@ export interface Series {
   url: string;
   status: "ok" | "stale" | "unavailable" | "demo";
   reason?: string;
+  reasonCode?:
+    | "permission_required"
+    | "license_review"
+    | "integration_pending"
+    | "download_failed"
+    | "not_downloaded";
+  attribution?: string;
+  notes?: string;
   fetchedAt: string | null;
   releasedAt?: string | null;
   observations: Point[];

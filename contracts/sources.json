@@ -573,8 +573,9 @@
     "frequency": "monthly",
     "provider": "ISM",
     "enabled": false,
-    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/",
+    "reason": "ISM exige autorización escrita para reproducir sus índices en una web pública. Integración de descarga pendiente; no se realizan solicitudes.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "ISM_NMI",
@@ -583,8 +584,9 @@
     "frequency": "monthly",
     "provider": "ISM",
     "enabled": false,
-    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/",
+    "reason": "ISM exige autorización escrita para reproducir sus índices en una web pública. Integración de descarga pendiente; no se realizan solicitudes.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "ISM_NEWORD",
@@ -593,8 +595,9 @@
     "frequency": "monthly",
     "provider": "ISM",
     "enabled": false,
-    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/",
+    "reason": "ISM exige autorización escrita para reproducir sus índices en una web pública. Integración de descarga pendiente; no se realizan solicitudes.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "ISM_PRICES",
@@ -603,8 +606,9 @@
     "frequency": "monthly",
     "provider": "ISM",
     "enabled": false,
-    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/",
+    "reason": "ISM exige autorización escrita para reproducir sus índices en una web pública. Integración de descarga pendiente; no se realizan solicitudes.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "ISM_NMPRICES",
@@ -613,8 +617,9 @@
     "frequency": "monthly",
     "provider": "ISM",
     "enabled": false,
-    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/",
+    "reason": "ISM exige autorización escrita para reproducir sus índices en una web pública. Integración de descarga pendiente; no se realizan solicitudes.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "CSUSHPINSA",
@@ -624,7 +629,8 @@
     "provider": "FRED",
     "enabled": false,
     "url": "https://fred.stlouisfed.org/series/CSUSHPINSA",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "reason": "S&P: fuente clasificada por FRED como «Pre-Approval Required». Falta autorización para redistribuirla en esta web pública; no se intenta descargar.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "VIXCLS",
@@ -632,9 +638,9 @@
     "unit": "puntos",
     "frequency": "daily",
     "provider": "FRED",
-    "enabled": false,
+    "enabled": true,
     "url": "https://fred.stlouisfed.org/series/VIXCLS",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "attribution": "Chicago Board Options Exchange, CBOE Volatility Index: VIX [VIXCLS], obtenido vía FRED. Copyright © 2016 Chicago Board Options Exchange, Inc."
   },
   {
     "id": "SP500",
@@ -644,7 +650,8 @@
     "provider": "FRED",
     "enabled": false,
     "url": "https://fred.stlouisfed.org/series/SP500",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "reason": "S&P: fuente clasificada por FRED como «Pre-Approval Required». Falta autorización para redistribuirla en esta web pública; no se intenta descargar.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "BAMLH0A0HYM2",
@@ -654,7 +661,8 @@
     "provider": "FRED",
     "enabled": false,
     "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "reason": "ICE exige autorización escrita para publicar o distribuir estos datos. FRED limita el histórico a tres años desde abril de 2026; no se intenta descargar.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "BAMLC0A0CM",
@@ -664,7 +672,8 @@
     "provider": "FRED",
     "enabled": false,
     "url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "reason": "ICE exige autorización escrita para publicar o distribuir estos datos. FRED limita el histórico a tres años desde abril de 2026; no se intenta descargar.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "BAMLC0A4CBBB",
@@ -674,7 +683,8 @@
     "provider": "FRED",
     "enabled": false,
     "url": "https://fred.stlouisfed.org/series/BAMLC0A4CBBB",
-    "reason": "Pendiente verificar acceso gratuito y permiso de redistribución del proveedor."
+    "reason": "ICE exige autorización escrita para publicar o distribuir estos datos. FRED limita el histórico a tres años desde abril de 2026; no se intenta descargar.",
+    "reasonCode": "permission_required"
   },
   {
     "id": "SH_P",
@@ -683,8 +693,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_E",
@@ -693,8 +705,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_D",
@@ -703,8 +717,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_CPI",
@@ -713,8 +729,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_CAPE",
@@ -723,8 +741,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_TRCAPE",
@@ -733,8 +753,10 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   },
   {
     "id": "SH_GS10",
@@ -743,7 +765,9 @@
     "frequency": "monthly",
     "provider": "Shiller",
     "enabled": false,
-    "url": "https://www.econ.yale.edu/~shiller/data.htm",
-    "reason": "Requiere histórico Shiller autorizado (SHILLER_FILE)."
+    "url": "https://shillerdata.com/",
+    "reason": "Importador disponible. Falta acreditar el permiso de redistribución del histórico Shiller para activar su actualización pública.",
+    "reasonCode": "license_review",
+    "attribution": "Robert J. Shiller, U.S. Stock Markets 1871–Present and CAPE Ratio, Shiller Data."
   }
 ]

@@ -39,6 +39,8 @@ jobs:
       - name: Download and validate real data
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          # Enable only after documenting permission to redistribute Shiller data.
+          SHILLER_PUBLICATION_APPROVED: ${{ vars.SHILLER_PUBLICATION_APPROVED }}
         run: python -m pipeline.build --previous .local/previous.json
       - name: Validate financial calculations
         env:

@@ -1,51 +1,76 @@
 # Fuentes y permisos
 
-El registro ejecutable es `contracts/sources.json`. Las series descargadas conservan
-su identificador, frecuencia, URL y fecha de adquisición. La tabla al pie del panel
-permite consultar su procedencia. No se descarga ningún dato desde la web de JFPartners.
+El registro ejecutable es `contracts/sources.json`. La adquisición conserva
+identificador, frecuencia, URL, atribución y fecha de descarga. No se obtiene
+ningún dato desde JFPartners ni se sustituyen índices por aproximaciones silenciosas.
 
-| Grupo                                           | Integración                         | Estado inicial                               |
-| ----------------------------------------------- | ----------------------------------- | -------------------------------------------- |
-| Tipos, Treasury, balances, cuentas financieras  | FRED / Federal Reserve              | Habilitado                                   |
-| Empleo, desempleo, salarios, IPC                | FRED / BLS                          | Habilitado                                   |
-| PIB, beneficios, PCE                            | FRED / BEA                          | Habilitado                                   |
-| Vivienda, permisos y ventas                     | FRED / Census Bureau                | Habilitado                                   |
-| Energía                                         | FRED / EIA                          | Habilitado                                   |
-| Hipotecas                                       | FRED / Freddie Mac                  | Habilitado; conservar atribución             |
-| Encuestas regionales, NFCI, CFNAI, expectativas | FRED / bancos de la Reserva Federal | Habilitado                                   |
-| GDPNow                                          | FRED / Atlanta Fed                  | Habilitado                                   |
-| ISM manufacturas, servicios, pedidos y precios  | ISM                                 | No habilitado                                |
-| VIX, S&P 500, Case-Shiller                      | Proveedores de índices, vía FRED    | Pendiente de revisión de derechos            |
-| Crédito HY, IG, BBB                             | ICE, vía FRED                       | No habilitado para redistribución automática |
-| P, D, E, CPI, CAPE, TR CAPE, bono histórico     | Robert Shiller                      | Importación explícita de archivo autorizado  |
-| Agenda de estadísticas                          | API de calendario FRED              | Habilitado                                   |
-| Reuniones FOMC                                  | Federal Reserve, calendario oficial | Habilitado                                   |
+## Revisión del 10 de septiembre de 2026
 
-Acceso gratuito no equivale automáticamente a permiso para redistribuir todo un
-histórico en una web pública. Antes de habilitar una serie restringida, documenta
-las condiciones, atribución y URL del proveedor. No contrates servicios desde el
-workflow y no sustituyas un índice por un proxy sin cambiar su etiqueta y metodología.
+| Grupo | Estado público | Motivo / evidencia |
+| --- | --- | --- |
+| 63 series macroeconómicas ya integradas | Habilitadas vía FRED | Sin cambios en esta revisión |
+| VIX (`VIXCLS`) | Habilitado; atribución CBOE vía FRED | [Ficha: Citation Required](https://fred.stlouisfed.org/series/VIXCLS), [categorías FRED](https://fred.stlouisfed.org/legal/) |
+| Case-Shiller vivienda (`CSUSHPINSA`) | Requiere autorización | [Ficha: Pre-Approval Required](https://fred.stlouisfed.org/series/CSUSHPINSA) |
+| S&P 500 (`SP500`) | Requiere autorización | [Notas de S&P en FRED](https://fred.stlouisfed.org/series/SP500) |
+| Crédito HY, IG y BBB | Requieren autorización de ICE | [HY](https://fred.stlouisfed.org/series/BAMLH0A0HYM2), [IG](https://fred.stlouisfed.org/series/BAMLC0A0CM), [BBB](https://fred.stlouisfed.org/series/BAMLC0A4CBBB) restringen publicación y distribución; histórico FRED limitado a tres años desde abril de 2026 |
+| Cinco índices ISM | Requieren autorización; adaptador pendiente | [Aviso oficial ISM](https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/august/) |
+| Siete series Shiller | Integración completa; permiso por confirmar | [Archivo del editor](https://shillerdata.com/); disponibilidad de descarga no acredita por sí sola redistribución pública |
+| Agenda FRED y FOMC | Habilitada | Sin cambios |
 
-Referencias oficiales:
+La configuración predeterminada obtiene **64 de 81 series**. Las 17 restantes no
+son errores de red: 10 requieren autorización y 7 esperan confirmar el permiso
+Shiller. Esta revisión no certifica de nuevo las condiciones de las 63 series
+preexistentes ni constituye asesoramiento jurídico.
 
-- [Observaciones FRED](https://fred.stlouisfed.org/docs/api/fred/series_observations.html)
-- [Agenda FRED](https://fred.stlouisfed.org/docs/api/fred/releases_dates.html)
-- [Condiciones y categorías de uso FRED](https://fred.stlouisfed.org/legal/)
-- [Calendario FOMC](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm)
-- [Datos de Robert Shiller](https://www.econ.yale.edu/~shiller/data.htm)
+No basta con esperar otra actualización, configurar otra clave FRED o cambiar
+`enabled` indiscriminadamente. No se contratan servicios ni se solicitan permisos
+a terceros automáticamente. Si se elige otro indicador, debe aprobarse y
+documentarse el cambio de nombre y metodología.
 
-## Archivo Shiller opcional
+## Integración Shiller
 
-`SHILLER_FILE` apunta a un archivo local .xls o .xlsx que tienes autorización para
-utilizar. El importador acepta una hoja Data (o primera hoja) con una fila que
-contenga Date, P y CPI. Reconoce también D, E, GS10, CAPE y TR_CAPE. Las fechas
-numéricas usan YYYY.MM, por ejemplo 2024.10 para octubre.
+El adaptador descubre el enlace `ie_data.xls` o `ie_data.xlsx` en
+https://shillerdata.com/; no fija un identificador de descarga que pueda caducar.
+Solo acepta HTTPS, el dominio del editor y su CDN `img1.wsimg.com`, sin
+redirecciones, con timeout, tamaño máximo y reintentos acotados.
 
-El lector rechaza diseños desconocidos y no asume posiciones de columnas.
-Es posible que un workbook original con encabezados multinivel necesite
-normalización antes de importarlo. No copies manualmente datos inventados para
-completar columnas. El archivo nunca se sube a Git.
+Reconoce los encabezados multinivel originales, `Rate GS10`, `TR CAPE`,
+fechas YYYY.MM (incluido octubre), vacíos y NA. No interpreta NA como cero.
+Conserva las notas del proveedor sobre estimaciones; algunas observaciones
+recientes son provisionales. No inventa observaciones anteriores al inicio de CAPE.
 
-El despliegue automático actual usa FRED y el calendario de la Fed. No incorpora
-un archivo Shiller local: antes de publicarlo habría que añadir su suministro
-autorizado al workflow. La aplicación y el motor están preparados para recibirlo.
+Para habilitar la actualización pública:
+
+1. Obtener y conservar evidencia de permiso para el uso previsto. Revisar si
+   cubre publicación del histórico, cálculos derivados y actualización periódica.
+2. Documentar el alcance y la atribución acordados; no subir correspondencia
+   privada ni datos de contacto personales al repositorio público.
+3. Configurar la **variable de repositorio** de Actions
+   `SHILLER_PUBLICATION_APPROVED=true` y ejecutar `Update data and publish`.
+   Esta variable registra una decisión del responsable, no concede derechos.
+4. Comprobar siete series descargadas, su última observación y la cobertura de
+   valoración. No se exige ninguna clave o suscripción adicional para la descarga.
+
+En local, la misma variable puede definirse en `.env`. `SHILLER_FILE` permite
+un archivo local alternativo, pero no evita la comprobación de autorización.
+Sin aprobación no se descarga, importa ni reutiliza un histórico previo.
+
+Si el archivo autorizado falla o cambia de formato, solo se conservan datos
+reales previamente validados, con fecha original y aviso de fallo. Una descarga
+parcial no reemplaza el conjunto anterior. El archivo Excel no se publica ni
+se sube a Git; los datos normalizados solo se publican tras habilitar su uso.
+
+## Estados visibles
+
+- **Descargada**: adquisición correcta; no implica que el período sea hoy.
+- **Conservada · falló actualización**: última descarga válida, sin rejuvenecer su fecha.
+- **Requiere autorización**: no se realiza una solicitud al proveedor.
+- **Permiso por confirmar**: integración preparada, sin habilitación pública.
+- **Integración pendiente**: falta implementar el acceso.
+- **Error de descarga**: solicitud o validación fallida y sin histórico conservable.
+- **Sintética**: datos de prueba, nunca mezclados con una publicación real.
+
+La tabla muestra meses y trimestres como períodos (p. ej. `T1 2026`), separados
+de la fecha de adquisición. Los códigos de motivo son opcionales para mantener
+compatibilidad con snapshots anteriores; un estado antiguo sin código se muestra
+como «Sin datos», no como una falsa descarga en curso.

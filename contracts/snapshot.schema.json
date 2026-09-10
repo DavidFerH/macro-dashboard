@@ -71,6 +71,17 @@
         "url": { "type": "string", "pattern": "^https://" },
         "status": { "enum": ["ok", "stale", "unavailable", "demo"] },
         "reason": { "type": "string" },
+        "reasonCode": {
+          "enum": [
+            "permission_required",
+            "license_review",
+            "integration_pending",
+            "download_failed",
+            "not_downloaded"
+          ]
+        },
+        "attribution": { "type": "string" },
+        "notes": { "type": "string" },
         "fetchedAt": { "type": ["string", "null"], "format": "date-time" },
         "releasedAt": { "type": ["string", "null"], "format": "date-time" },
         "observations": {

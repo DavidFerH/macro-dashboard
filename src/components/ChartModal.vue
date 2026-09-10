@@ -92,6 +92,21 @@ function backdrop(event: MouseEvent) {
       :sector-mode="sectorMode"
       expanded
     />
+    <p
+      v-for="trace in spec.traces.filter(
+        (t) => snapshot.series[t.id]?.attribution,
+      )"
+      :key="trace.id"
+      class="meta"
+    >
+      <a
+        :href="snapshot.series[trace.id].url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ snapshot.series[trace.id].attribution }}
+      </a>
+    </p>
     <div class="learn-note">
       <p><b>Qué mide.</b> {{ spec.learn.what }}</p>
       <p><b>Cómo leerlo.</b> {{ spec.learn.read }}</p>

@@ -15,6 +15,22 @@ Si una fuente falla, solo se reutiliza una serie de un snapshot real previamente
 validado. Se conserva su fecha original de adquisición y se marca stale.
 Nunca se mezclan fixtures de prueba con datos reales.
 
+VIX se actualiza con la misma clave FRED y conserva su atribución CBOE. El motivo
+de ausencia se publica como `reasonCode`, separado del estado de adquisición.
+Los mensajes de autorización no indican un fallo de red y no generan reintentos.
+
+Shiller se actualiza automáticamente desde el archivo del editor solo cuando
+la variable de repositorio `SHILLER_PUBLICATION_APPROVED` vale exactamente `true`.
+No contiene una clave: documenta una autorización previamente verificada por el
+responsable. Consulta SOURCES.md antes de activarla. Si se retira, la siguiente
+publicación excluye esas series y no reutiliza el histórico anterior. Esto no
+elimina publicaciones antiguas ni artefactos ya descargados.
+
+Un error Shiller no bloquea los datos FRED. Se conserva el último histórico real
+validado o se informa «Error de descarga». El archivo original incluye notas de
+estimaciones que se conservan en la tabla de fuentes. La ausencia de autorización
+se muestra como «Permiso por confirmar», sin descargar el archivo.
+
 Sin Treasury 10 años, PCE subyacente, desempleo, empleo no agrícola, solicitudes
 o PIB no se publica. Tampoco se publica si ninguna fuente se ha actualizado.
 La web anterior permanece disponible cuando falla el workflow.

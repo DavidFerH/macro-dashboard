@@ -7,6 +7,7 @@ import { dateLabel, madridDate, number } from "./domain/format";
 import { createSeriesResolver, latest, transform } from "./domain/series";
 import { parseSnapshot } from "./domain/validate";
 import { valuation } from "./domain/valuation";
+import { observationPeriod, sourceStatus } from "./domain/source-status";
 import type { ChartSpec, Snapshot, Transform } from "./domain/types";
 import ChartCard from "./components/ChartCard.vue";
 import ChartModal from "./components/ChartModal.vue";
@@ -439,7 +440,10 @@ onUnmounted(() => {
         <p>
           Datos consultados directamente a sus proveedores. Una observación
           antigua puede corresponder a la frecuencia normal de publicación. Los
-          datos ausentes no se sustituyen por cero.
+          datos ausentes no se sustituyen por cero. «Requiere autorización» y
+          «Permiso por confirmar» no son errores de descarga: esas fuentes no se
+          consultan hasta resolver sus condiciones de publicación. Esperar a la
+          siguiente actualización no las activa.
         </p>
         <details>
           <summary>
@@ -470,21 +474,25 @@ onUnmounted(() => {
                     >
                   </td>
                   <td>
+                    {{ sourceStatus(series) }}
+                  </td>
+                  <td>
                     {{
-                      {
-                        ok: "Descargada",
-                        stale: "Conservada",
-                        unavailable: "Pendiente",
-                        demo: "Sintética",
-                      }[series.status]
+                      observationPeriod(
+                        series,
+                        latest(series.observations)?.date,
+                      )
                     }}
                   </td>
-                  <td>{{ dateLabel(latest(series.observations)?.date) }}</td>
                   <td>
                     {{
                       series.reason ??
                       "Descargada " + dateLabel(series.fetchedAt ?? undefined)
                     }}
+                    <p v-if="series.attribution" class="meta">
+                      {{ series.attribution }}
+                    </p>
+                    <p v-if="series.notes" class="meta">{{ series.notes }}</p>
                   </td>
                 </tr>
               </tbody>

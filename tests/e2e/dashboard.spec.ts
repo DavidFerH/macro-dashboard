@@ -98,3 +98,48 @@ test("invalid payload shows an actionable error and retry works", async ({
   await page.getByRole("button", { name: "Reintentar" }).click();
   await expect(page.locator("[data-chart]")).toHaveCount(44);
 });
+
+test("source table distinguishes publication permissions from download failures", async ({
+  page,
+}) => {
+  const data = JSON.parse(fixture);
+  for (const [id, reasonCode] of [
+    ["ISM_PMI", "permission_required"],
+    ["SH_P", "license_review"],
+    ["DGS2", "download_failed"],
+  ]) {
+    Object.assign(data.series[id], {
+      status: "unavailable",
+      reasonCode,
+      observations: [],
+      fetchedAt: null,
+    });
+  }
+  await page.unroute("**/data/snapshot.json");
+  await page.route("**/data/snapshot.json", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify(data),
+    }),
+  );
+  await page.goto("macro.html");
+  await page
+    .getByText("Ver disponibilidad, procedencia y fechas de cada serie")
+    .click();
+  const rows = page.locator("table tbody tr");
+  await expect(
+    rows.filter({ has: page.locator("code", { hasText: /^ISM_PMI$/ }) }),
+  ).toContainText("Requiere autorización");
+  await expect(
+    rows.filter({ has: page.locator("code", { hasText: /^SH_P$/ }) }),
+  ).toContainText("Permiso por confirmar");
+  await expect(
+    rows.filter({ has: page.locator("code", { hasText: /^DGS2$/ }) }),
+  ).toContainText("Error de descarga");
+  await expect(
+    rows.filter({ has: page.locator("code", { hasText: /^VIXCLS$/ }) }),
+  ).toContainText("Chicago Board Options Exchange");
+  await expect(
+    rows.filter({ has: page.locator("code", { hasText: /^GDP$/ }) }),
+  ).toContainText("T3 2026");
+});

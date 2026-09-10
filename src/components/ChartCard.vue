@@ -4,6 +4,7 @@ import type { ChartSpec, Point, Snapshot } from "../domain/types";
 import ChartPlot from "./ChartPlot.vue";
 import { dateLabel } from "../domain/format";
 import { latest } from "../domain/series";
+import { sourceStatus } from "../domain/source-status";
 const props = defineProps<{
   spec: ChartSpec;
   snapshot: Snapshot;
@@ -79,7 +80,32 @@ const missing = computed(() =>
     </div>
     <p v-if="missing.length" class="missing-note">
       Sin cobertura:
-      {{ missing.map((t) => snapshot.series[t.id]?.name ?? t.id).join(", ") }}.
+      {{
+        missing
+          .map((t) => {
+            const source = snapshot.series[t.id];
+            return source
+              ? `${source.name} (${sourceStatus(source)})`
+              : (t.label ?? t.id);
+          })
+          .join(", ")
+      }}.
+      <a href="#sources">Ver causas y fuentes</a>
+    </p>
+    <p
+      v-for="trace in spec.traces.filter(
+        (t) => snapshot.series[t.id]?.attribution,
+      )"
+      :key="trace.id"
+      class="meta"
+    >
+      <a
+        :href="snapshot.series[trace.id].url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ snapshot.series[trace.id].attribution }}
+      </a>
     </p>
     <div v-if="learn" class="learn-note">
       <p><b>Qué mide.</b> {{ spec.learn.what }}</p>

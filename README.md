@@ -69,9 +69,11 @@ La publicación de cualquier serie debe respetar las condiciones de su proveedor
 
 El catálogo contiene 44 gráficos. Una tarjeta existente no implica que su fuente
 esté habilitada: la tabla de cobertura muestra el estado de las 81 series.
-La primera integración obtiene 63 series de FRED. ISM, datos sujetos a derechos
-de índices de mercado y el histórico Shiller no se sustituyen por aproximaciones
-silenciosas. Consulta [fuentes](docs/SOURCES.md).
+La configuración predeterminada obtiene 64 series de FRED, incluido VIX con
+atribución CBOE. Diez series requieren autorización; las siete de Shiller tienen
+importador automático preparado y esperan confirmar el permiso de publicación.
+Los estados distinguen esas causas de errores de descarga. No se sustituyen
+datos por aproximaciones silenciosas. Consulta [fuentes](docs/SOURCES.md).
 
 Las fórmulas y diferencias respecto a la referencia se explican en
 [metodología](docs/METHODOLOGY.md). La aplicación es una implementación independiente,
